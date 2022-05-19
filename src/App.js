@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import "./index.css";
+import React, { useState } from 'react';
+import './index.css';
 
 export default function App() {
   const [state, setState] = useState({
-    skills: [{ skill: "JavaScript", level: 4 }],
+    skills: [{ skill: 'JavaScript', level: 4 }],
     newSkill: {
-      skill: "",
-      level: "3"
-    }
+      skill: '',
+      level: '3',
+    },
   });
 
   function addSkill(evt) {
@@ -15,9 +15,9 @@ export default function App() {
     setState({
       skills: [...state.skills, state.newSkill],
       newSkill: {
-        skill: "",
-        level: "3"
-      }
+        skill: '',
+        level: '3',
+      },
     });
   }
 
@@ -26,8 +26,8 @@ export default function App() {
       ...state,
       newSkill: {
         ...state.newSkill,
-        [evt.target.name]: evt.target.value
-      }
+        [evt.target.name]: evt.target.value,
+      },
     });
   }
 
