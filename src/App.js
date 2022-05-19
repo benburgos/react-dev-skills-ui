@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 
 export default function App() {
@@ -9,6 +9,25 @@ export default function App() {
       level: '3',
     },
   });
+
+  useEffect(() => {
+    async function getAppData() {
+      try {
+        // fetch the data and conver json to js
+        let skills = await fetch('http://localhost:3001/api/skills').then(
+          (res) => res.json()
+        );
+        // set the state to the data
+        setState({
+          ...state,
+          skills,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getAppData();
+  }, []);
 
   function addSkill(evt) {
     evt.preventDefault();
